@@ -11,6 +11,39 @@ st.set_page_config(page_title="Corporate Translator 😏")
 
 st.title("😏 Corporate BS Translator")
 st.write("Say it better — or translate what they really meant.")
+st.markdown("**Built by Parisa Honari** ✨")
+
+st.caption("Turning corporate chaos into clarity — one translation at a time.")
+
+st.markdown("""
+---
+⚠️ **Disclaimer (read before you copy-paste this to your boss):**  
+This app is for **fun, humor, and a sprinkle of sarcasm**. It translates corporate language into what people *might* actually mean — not what you should say out loud.
+
+Do NOT use this in real-life professional situations unless you enjoy awkward silences, HR meetings, or sudden calendar invites titled *“Quick Chat.”*
+
+Use at your own risk.  
+If it makes you look brilliant — built by Parisa Honari.  
+If it gets you in trouble — this app does not exist. 🙂
+---
+""")
+🧠 Why here (important)
+
+Shows ownership immediately (your name = branding 💅)
+
+Sets legal tone before user interacts
+
+Feels like a real product, not a random tool
+
+⚡ Bonus (optional but VERY you)
+
+If you want it cleaner (less heavy at top), we can:
+
+collapse disclaimer in an expander
+
+or add a “⚠️ Fun Mode Only” badge
+
+Say the word and I’ll level it up 😏
 
 # 📝 INPUT
 user_input = st.text_area("Paste the message (yours or theirs):")
