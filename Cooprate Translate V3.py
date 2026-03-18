@@ -8,7 +8,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # ⚙️ Page Config
 st.set_page_config(page_title="Corporate Translator 😏", layout="wide")
 
-# 🎨 STYLE (CORAL THEME + FIX SPACING)
+# 🎨 STYLE
 st.markdown("""
 <style>
 
@@ -31,10 +31,11 @@ textarea {
 /* Buttons */
 .stButton>button {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: #E87C72;
     color: white;
     font-weight: 600;
+    padding: 10px;
 }
 
 .stButton>button:hover {
@@ -56,7 +57,7 @@ Built by Parisa Honari ✨
 </p>
 """, unsafe_allow_html=True)
 
-# ✍️ INPUT (CENTER FEEL)
+# ✍️ INPUT
 st.markdown("""
 <div style="
     display:flex;
@@ -71,18 +72,21 @@ st.markdown("""
 
 user_input = st.text_area("", height=150)
 
-# 🎯 BUTTONS
-col1, col2 = st.columns(2)
+# 🎯 CENTERED BUTTONS (FIXED)
+center1, center2, center3 = st.columns([2,1,2])
 
 mode = None
 
-with col1:
-    if st.button("✨ Polish it"):
-        mode = "polish"
+with center2:
+    colA, colB = st.columns(2)
 
-with col2:
-    if st.button("😏 Translate the BS"):
-        mode = "translate"
+    with colA:
+        if st.button("✨ Polish it"):
+            mode = "polish"
+
+    with colB:
+        if st.button("😏 Translate the BS"):
+            mode = "translate"
 
 # 🚀 RUN
 if mode and user_input:
@@ -168,7 +172,7 @@ Input: "{user_input}"
 elif mode and not user_input:
     st.warning("Please enter a message first 👀")
 
-# ⚠️ FOOTER DISCLAIMER
+# ⚠️ FOOTER
 st.markdown("""
 <br><br>
 <hr>
