@@ -8,14 +8,14 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # ⚙️ Page Config
 st.set_page_config(page_title="Corporate Translator 😏", layout="wide")
 
-# 🎨 STYLE (width + polish)
+# 🎨 STYLE (FIXED SPACING + WIDTH)
 st.markdown("""
 <style>
 
-/* Layout width */
+/* Layout width + MOVE CONTENT UP */
 .block-container {
     max-width: 1100px;
-    padding-top: 1.2rem;
+    padding-top: 0.3rem;
     margin: auto;
 }
 
@@ -56,8 +56,19 @@ Built by Parisa Honari ✨
 </p>
 """, unsafe_allow_html=True)
 
-# 📝 INPUT (CENTER FEEL)
-st.markdown("### ✍️ Paste your message below")
+# ✍️ INPUT (MOVED UP + CENTER FEEL)
+st.markdown("""
+<div style="
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+">
+    <h3 style="margin-bottom:10px;">✍️ Paste your message below</h3>
+</div>
+""", unsafe_allow_html=True)
+
 user_input = st.text_area("", height=150)
 
 # 🎯 BUTTONS
@@ -156,7 +167,7 @@ Input: "{user_input}"
 elif mode and not user_input:
     st.warning("Please enter a message first 👀")
 
-# ⚠️ DISCLAIMER (MOVED TO BOTTOM)
+# ⚠️ DISCLAIMER (BOTTOM)
 st.markdown("""
 <br><br>
 <hr>
