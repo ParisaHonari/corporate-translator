@@ -14,7 +14,7 @@ st.markdown("""
 
 /* Layout */
 .block-container {
-    max-width: 1100px;
+    max-width: 1000px;
     padding-top: 0.3rem;
     margin: auto;
 }
@@ -24,18 +24,20 @@ textarea {
     width: 100% !important;
     border-radius: 12px !important;
     border: 1px solid #ddd !important;
-    padding: 12px !important;
+    padding: 14px !important;
     font-size: 16px !important;
 }
 
 /* Buttons */
 .stButton>button {
-    width: 100%;
-    border-radius: 12px;
+    border-radius: 16px;
     background-color: #E87C72;
     color: white;
     font-weight: 600;
-    padding: 10px;
+    padding: 14px;
+    font-size: 16px;
+    white-space: nowrap;
+    border: none;
 }
 
 .stButton>button:hover {
@@ -58,34 +60,23 @@ Built by Parisa Honari ✨
 """, unsafe_allow_html=True)
 
 # ✍️ INPUT
-st.markdown("""
-<div style="
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    margin-top: 15px;
-    margin-bottom: 10px;
-">
-    <h3 style="margin-bottom:10px;">✍️ Paste your message below</h3>
-</div>
-""", unsafe_allow_html=True)
-
+st.markdown("<h3 style='text-align:center;'>✍️ Paste your message below</h3>", unsafe_allow_html=True)
 user_input = st.text_area("", height=150)
 
-# 🎯 CENTERED BUTTONS (FIXED)
-center1, center2, center3 = st.columns([2,1,2])
-
+# 🎯 PERFECT BUTTONS (FIXED)
 mode = None
 
-with center2:
-    colA, colB = st.columns(2)
+col_left, col_center, col_right = st.columns([1,2,1])
 
-    with colA:
-        if st.button("✨ Polish it"):
+with col_center:
+    b1, b2 = st.columns(2)
+
+    with b1:
+        if st.button("✨ Polish it", use_container_width=True):
             mode = "polish"
 
-    with colB:
-        if st.button("😏 Translate the BS"):
+    with b2:
+        if st.button("😏 Translate the BS", use_container_width=True):
             mode = "translate"
 
 # 🚀 RUN
@@ -176,9 +167,8 @@ elif mode and not user_input:
 st.markdown("""
 <br><br>
 <hr>
-
 <p style='font-size:13px; color:gray; text-align:center;'>
-⚠️ This tool is for fun, humor, and a bit of sarcasm.  
-Use at your own risk — especially before sending emails to your boss 😏
+⚠️ This tool is for fun, humor, and sarcasm.  
+Use at your own risk 😏
 </p>
 """, unsafe_allow_html=True)
