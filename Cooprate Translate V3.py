@@ -63,7 +63,7 @@ Built by Parisa Honari ✨
 st.markdown("<h3 style='text-align:center;'>✍️ Paste your message below</h3>", unsafe_allow_html=True)
 user_input = st.text_area("", height=150)
 
-# 🎯 PERFECT BUTTONS (FIXED)
+# 🎯 BUTTONS (FIXED + CENTERED)
 mode = None
 
 col_left, col_center, col_right = st.columns([1,2,1])
@@ -149,14 +149,27 @@ Input: "{user_input}"
     st.divider()
     st.subheader("✨ Result")
 
+    # ✅ CLEAN FORMAT OUTPUT
+    result = response.choices[0].message.content
+
+    result = result.replace("1.", "<br><b>1.</b>")
+    result = result.replace("2.", "<br><b>2.</b>")
+    result = result.replace("3.", "<br><b>3.</b>")
+
+    result = result.replace("HR-Safe Version", "🧾 <b>HR-Safe Version</b>")
+    result = result.replace("Strategic Glow-Up", "✨ <b>Strategic Glow-Up</b>")
+    result = result.replace("Savage Version", "😈 <b>Savage Version</b>")
+
     st.markdown(f"""
     <div style="
         background-color:#F9F4F3;
-        padding:20px;
-        border-radius:12px;
+        padding:22px;
+        border-radius:14px;
         border-left:5px solid #E87C72;
+        line-height:1.6;
+        font-size:15.5px;
     ">
-    {response.choices[0].message.content}
+    {result}
     </div>
     """, unsafe_allow_html=True)
 
