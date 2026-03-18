@@ -1,20 +1,21 @@
 import streamlit as st
-from openai import OpenAI
-
-# 🔑 API
 import os
 from openai import OpenAI
 
+# 🔑 API
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+# ⚙️ Page Config
 st.set_page_config(page_title="Corporate Translator 😏")
 
+# 🧠 HEADER
 st.title("😏 Corporate BS Translator")
 st.write("Say it better — or translate what they really meant.")
-st.markdown("**Built by Parisa Honari** ✨")
 
+st.markdown("**Built by Parisa Honari** ✨")
 st.caption("Turning corporate chaos into clarity — one translation at a time.")
 
+# ⚠️ DISCLAIMER
 st.markdown("""
 ---
 ⚠️ **Disclaimer (read before you copy-paste this to your boss):**  
@@ -27,23 +28,6 @@ If it makes you look brilliant — built by Parisa Honari.
 If it gets you in trouble — this app does not exist. 🙂
 ---
 """)
-🧠 Why here (important)
-
-Shows ownership immediately (your name = branding 💅)
-
-Sets legal tone before user interacts
-
-Feels like a real product, not a random tool
-
-⚡ Bonus (optional but VERY you)
-
-If you want it cleaner (less heavy at top), we can:
-
-collapse disclaimer in an expander
-
-or add a “⚠️ Fun Mode Only” badge
-
-Say the word and I’ll level it up 😏
 
 # 📝 INPUT
 user_input = st.text_area("Paste the message (yours or theirs):")
