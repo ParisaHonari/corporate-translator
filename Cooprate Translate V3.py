@@ -8,17 +8,18 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # ⚙️ Page Config
 st.set_page_config(page_title="Corporate Translator 😏", layout="wide")
 
+# 🎨 STYLE (width + polish)
 st.markdown("""
 <style>
 
-/* Make the whole app wider */
+/* Layout width */
 .block-container {
     max-width: 1100px;
     padding-top: 1.2rem;
     margin: auto;
 }
 
-/* Make text area nicer */
+/* Text area */
 textarea {
     width: 100% !important;
     border-radius: 12px !important;
@@ -45,28 +46,19 @@ textarea {
 """, unsafe_allow_html=True)
 
 # 🧠 HEADER
-st.title("😏 Corporate BS Translator")
-st.write("Say it better — or translate what they really meant.")
-
-st.markdown("**Built by Parisa Honari** ✨")
-st.caption("Turning corporate chaos into clarity — one translation at a time.")
-
-# ⚠️ DISCLAIMER
 st.markdown("""
----
-⚠️ **Disclaimer (read before you copy-paste this to your boss):**  
-This app is for **fun, humor, and a sprinkle of sarcasm**. It translates corporate language into what people *might* actually mean — not what you should say out loud.
+<h1 style='text-align: center; color:#7B1E3A;'>😏 Corporate BS Translator</h1>
+<p style='text-align: center; font-size:18px; color:#444;'>
+Say it better — or translate what they really meant.
+</p>
+<p style='text-align: center; font-weight:600; color:#7B1E3A;'>
+Built by Parisa Honari ✨
+</p>
+""", unsafe_allow_html=True)
 
-Do NOT use this in real-life professional situations unless you enjoy awkward silences, HR meetings, or sudden calendar invites titled *“Quick Chat.”*
-
-Use at your own risk.  
-If it makes you look brilliant — built by Parisa Honari.  
-If it gets you in trouble — this app does not exist. 🙂
----
-""")
-
-# 📝 INPUT
-user_input = st.text_area("Paste the message (yours or theirs):")
+# 📝 INPUT (CENTER FEEL)
+st.markdown("### ✍️ Paste your message below")
+user_input = st.text_area("", height=150)
 
 # 🎯 BUTTONS
 col1, col2 = st.columns(2)
@@ -81,7 +73,7 @@ with col2:
     if st.button("😏 Translate the BS"):
         mode = "translate"
 
-# 🚀 RUN ONLY WHEN BUTTON CLICKED
+# 🚀 RUN
 if mode and user_input:
 
     prompt = f"""
@@ -149,7 +141,28 @@ Input: "{user_input}"
 
     st.divider()
     st.subheader("✨ Result")
-    st.write(response.choices[0].message.content)
+
+    st.markdown(f"""
+    <div style="
+        background-color:#F7F7F7;
+        padding:20px;
+        border-radius:12px;
+        border-left:5px solid #7B1E3A;
+    ">
+    {response.choices[0].message.content}
+    </div>
+    """, unsafe_allow_html=True)
 
 elif mode and not user_input:
     st.warning("Please enter a message first 👀")
+
+# ⚠️ DISCLAIMER (MOVED TO BOTTOM)
+st.markdown("""
+<br><br>
+<hr>
+
+<p style='font-size:13px; color:gray; text-align:center;'>
+⚠️ This tool is for fun, humor, and a bit of sarcasm.  
+Use at your own risk — especially before sending emails to your boss 😏
+</p>
+""", unsafe_allow_html=True)
